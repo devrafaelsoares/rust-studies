@@ -1,0 +1,22 @@
+# Rust build artifacts
+/target
+**/target
+
+# Cargo lock is committed for binary crates in a workspace
+# Uncomment below if this were a library-only workspace
+# Cargo.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
