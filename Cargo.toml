@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "rust-core",
+    "hello_cargo",
+    "primitive-types",
+    "rust-loop",
+    "grpc-chat",
+]
+resolver = "3"

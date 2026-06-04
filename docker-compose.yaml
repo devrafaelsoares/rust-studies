@@ -1,0 +1,16 @@
+services:
+    rust-dev-service:
+        container_name: rust-dev-container
+        image: rust-dev-image
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                - RUST_VERSION=1.95.0-slim
+                - UID=1000
+                - GID=1000
+                - USER=rust
+                - PASSWORD=rust
+                - SHELL=/bin/bash
+        volumes:
+            - .:/app
