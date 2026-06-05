@@ -1,3 +1,23 @@
+struct Car {
+    brand: String,
+    year: u32,
+    price: f64,
+}
+
+impl PartialEq for Car {
+    fn eq(&self, other: &Self) -> bool {
+        self.price == other.price
+    }
+}
+
+impl PartialOrd for Car {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        // Taking advantage of f64 native ability to compare itself!
+        self.price.partial_cmp(&other.price)
+    }
+}
+
+
 fn add(a: i32, b: i32) -> i32 {
     a + b
 }
@@ -111,6 +131,20 @@ fn factorial(n: u64) -> u64 {
 
 }
 
+fn find_largest<T:PartialOrd>(list: &[T]) -> &T {
+
+    let mut max_number = &list[0];
+
+    for number in list {
+       
+        if number >= max_number {
+            max_number = number
+        }
+    }
+
+    max_number
+}
+
 fn main() {
     println!("=== 🧮 Testing Basic Functions ===");
     
@@ -164,4 +198,13 @@ fn main() {
 
     let fibonacci_num = 10;
     println!("fibonacci({fibonacci_num}) => {}", fibonacci(fibonacci_num));
+
+    let mercedes_car = Car { brand: String::from("Mercedes"), year: 2025, price: 750000.00 };
+    let fiat_car = Car { brand: String::from("Uno"), year: 2016, price: 60000.00  };
+
+    // Now the compiler accepts passing an array of Cars into our Generic function!
+    let cars_array = [mercedes_car, fiat_car];
+    let most_expensive_car = find_largest(&cars_array);
+
+    println!("The most expensive car is: {} costing ${}", most_expensive_car.brand, most_expensive_car.price);
 }
