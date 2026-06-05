@@ -4,6 +4,7 @@ members = [
     "hello_cargo",
     "primitive-types",
     "rust-loop",
-    "grpc-chat",
+    "grpc-chat", 
+    "rust-functions",
 ]
 resolver = "3"
