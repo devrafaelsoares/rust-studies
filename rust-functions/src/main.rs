@@ -1,3 +1,5 @@
+pub mod closures;
+
 struct Car {
     brand: String,
     year: u32,
@@ -207,4 +209,12 @@ fn main() {
     let most_expensive_car = find_largest(&cars_array);
 
     println!("The most expensive car is: {} costing ${}", most_expensive_car.brand, most_expensive_car.price);
+
+    println!("\n=== ⚙️ Testing Closure Functions ===");
+    let add_ten = closures::make_adder(10);
+    println!("make_adder(10)(5) => {}", add_ten(5));
+
+    let numbers = vec![1, 2, 3, 4, 5];
+    let tripled = closures::transform(&numbers, |x| x * 3);
+    println!("transform({:?}, |x| x * 3) => {:?}", numbers, tripled);
 }
